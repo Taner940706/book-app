@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-
+import Navbar from './components/Navbar.js'
 import Home from './pages/home/Home.js'
 import Book from './pages/book/Book.js'
 import Search from './pages/search/Search.js'
@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/books/:id" element={<Book />} />
