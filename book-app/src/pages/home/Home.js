@@ -1,3 +1,4 @@
+import BookList from '../../components/BookList'
 import {useFetch} from '../../hooks/useFetch'
 
 import './Home.css'
@@ -8,9 +9,7 @@ export default function Home(){
         <div className='home'>
             {error && <p className='error'>{error}</p>}
             {isPending && <p className='loading'>Loading...</p>}
-            {data && data.map(book => (
-                <h2 key={book.id}>{book.title}</h2>
-            ))}
+            {data && <BookList books = {data}/>}
         </div>
     )
 }
