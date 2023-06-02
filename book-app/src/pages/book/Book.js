@@ -11,7 +11,16 @@ export default function Book(){
         <div className='book'>
             {error && <p className='error'></p>}
             {isPending && <p className='loading'>Loading...</p>}
-            {book && <h1>{book.title}</h1>}
+            {book && (
+                <>
+                <h2 className='page-title'>{book.title}</h2>
+                <p className='author'>{book.author}</p>
+                <ul>
+                    {book.genres.map(genre => <li key={genre}>{genre}</li>)}
+                </ul>
+                <p className='topic'>{book.topic}</p>
+                </>
+            )}
         </div>
     )
 }
