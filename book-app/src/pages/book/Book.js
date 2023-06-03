@@ -15,6 +15,10 @@ export default function Book(){
 		setList(newList);
 }
 
+const navigateToEditForm = () => {
+    navigate('/edit/{id}');
+  };
+
     return(
         <div className='book'>
             {error && <p className='error'></p>}
@@ -30,7 +34,7 @@ export default function Book(){
 		<button type="button" onClick={() => handleRemove(book.id)}>
             Remove
           </button>
-
+          <button onClick={navigateToEditForm}>Edit book</button>
                 </>
             )}
         </div>
