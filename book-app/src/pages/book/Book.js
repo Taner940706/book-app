@@ -1,4 +1,4 @@
-import {useParams} from 'react-router-dom'
+import {useParams, useState} from 'react-router-dom'
 import {useFetch} from '../../hooks/useFetch'
 
 import './Book.css'
@@ -7,6 +7,14 @@ export default function Book(){
     const {id} = useParams()
     const url = 'http://localhost:3000/books/' + id
     const {error, isPending, data: book} = useFetch(url)
+	const [list, setList] = useState(book);
+	const navigate = useNavigate();
+
+	const handleRemove = (id) =>{
+		const newList = list.filter((item) => item.id !== id);
+		setList(newList);
+}
+
     return(
         <div className='book'>
             {error && <p className='error'></p>}
@@ -19,6 +27,10 @@ export default function Book(){
                     {book.genres.map(genre => <li key={genre}>{genre}</li>)}
                 </ul>
                 <p className='topic'>{book.topic}</p>
+		<button type="button" onClick={() => handleRemove(book.id)}>
+            Remove
+          </button>
+
                 </>
             )}
         </div>
