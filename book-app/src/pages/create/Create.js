@@ -48,7 +48,7 @@ export default function Create(){
                         />
                     </div>
                 </label>
-                <p>Current genres are: {genres.map(i => <em>{i}, </em>)}</p>
+                <p>Current genres are: {genres.map(i => <em key={i}>{i}, </em>)}</p>
                 <label>
                     <span>Topic:</span>
                     <textarea onChange={(e) => setTopic(e.target.value)} value={topic} required></textarea>
