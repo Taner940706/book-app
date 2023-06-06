@@ -1,5 +1,6 @@
-import {useRef, useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {useFetch} from '../../hooks/useFetch'
+import {useHistory} from "react-router-dom"
 import './Create.css'
 
 export default function Create(){
@@ -9,6 +10,7 @@ export default function Create(){
     const [newGenre, setNewGenre] = useState('')
     const genreInput = useRef(null)
     const [topic, setTopic] = useState([])
+    const history = useHistory
 
     const [postData, data, error] = useFetch('http://localhost:3000/books', "POST")
 
@@ -27,6 +29,12 @@ export default function Create(){
         setNewGenre('')
         genreInput.current.focus()
     }
+
+    useEffect(() => {
+        if (data){
+            history.push('/')
+        }
+    }, [data])
 
     return (
         <div className='create'>
