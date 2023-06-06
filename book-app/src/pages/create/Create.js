@@ -1,4 +1,5 @@
 import {useRef, useState} from 'react'
+import {useFetch} from '../../hooks/useFetch'
 import './Create.css'
 
 export default function Create(){
@@ -9,8 +10,11 @@ export default function Create(){
     const genreInput = useRef(null)
     const [topic, setTopic] = useState([])
 
+    const [postData, data, error] = useFetch('http://localhost:3000/books', "POST")
+
     const handleSubmit = (e) => {
         e.preventDefault()
+        postData({title, author, genres, topic})
     }
 
     const handleAdd = (e) => {
