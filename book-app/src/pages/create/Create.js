@@ -6,10 +6,10 @@ import './Create.css'
 export default function Create(){
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
-    const [genres, setGenres] = useState('')
+    const [genres, setGenres] = useState([])
     const [newGenre, setNewGenre] = useState('')
     const genreInput = useRef(null)
-    const [topic, setTopic] = useState([])
+    const [topic, setTopic] = useState('')
     const history = useHistory
 
     const [postData, data, error] = useFetch('http://localhost:3000/books', "POST")
