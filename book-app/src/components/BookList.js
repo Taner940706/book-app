@@ -2,6 +2,11 @@ import {Link} from 'react-router-dom'
 import './BookList.css'
 
 export default function BookList({books}){
+
+    if (books.length === 0){
+        return <div className='error'>No books found!</div>
+    }
+
     return (
         <div className='book-list'>
             {books.map(book => (
