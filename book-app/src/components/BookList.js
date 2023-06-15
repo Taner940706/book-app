@@ -14,7 +14,7 @@ export default function BookList({books}){
                     <h3>{book.title}</h3>
                     <p>{book.genres}</p>
                     <p>{book.author}</p>
-                    <div>{book.description.substring(0,10)} ... </div>
+                    <div>{book.description}</div>
                     <Link to={`/books/${book.id}`}>Read this</Link>
                     </div>
             ))}

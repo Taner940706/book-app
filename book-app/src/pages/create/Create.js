@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from 'react'
 import {useFetch} from '../../hooks/useFetch'
-import {useHistory} from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 import './Create.css'
 
 export default function Create(){
@@ -10,9 +10,9 @@ export default function Create(){
     const [newGenre, setNewGenre] = useState('')
     const genreInput = useRef(null)
     const [topic, setTopic] = useState('')
-    const history = useHistory
+    const navigate = useNavigate()
 
-    const [postData, data, error] = useFetch('http://localhost:3000/books', "POST")
+    const {postData, data, error} = useFetch('http://localhost:3000/books', "POST")
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -32,7 +32,7 @@ export default function Create(){
 
     useEffect(() => {
         if (data){
-            history.push('/')
+            navigate('/');
         }
     }, [data])
 
@@ -58,6 +58,7 @@ export default function Create(){
                         value={newGenre}
                         ref={genreInput}
                         />
+                        <button onClick={handleAdd} className='btn'>Add</button>
                     </div>
                 </label>
                 <p>Current genres are: {genres.map(i => <em key={i}>{i}, </em>)}</p>

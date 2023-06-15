@@ -1,4 +1,5 @@
-import {useParams, useState} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
+import {useState} from 'react'
 import {useFetch} from '../../hooks/useFetch'
 
 import './Book.css'
